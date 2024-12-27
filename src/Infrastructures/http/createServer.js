@@ -42,6 +42,14 @@ const createServer = async (container) => {
       value: 'Hello world!',
     }),
   });
+  
+  server.route({
+    method: 'GET',
+    path: '/health',
+    handler: () => ({
+      value: 'health OK!',
+    }),
+  });
 
   await server.register([
     {

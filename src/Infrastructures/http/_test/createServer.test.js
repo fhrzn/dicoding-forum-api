@@ -51,3 +51,16 @@ describe('GET /', () => {
     expect(responseJson.value).toEqual('Hello world!');
   });
 });
+
+describe('GET /health', () => {
+  it('should return 200 and health OK', async() => {
+    const server = await createServer({});
+    const response = await server.inject({
+      method: 'GET',
+      url: '/health',
+    });
+    const responseJson = JSON.parse(response.payload);
+    expect(response.statusCode).toEqual(200);
+    expect(responseJson.value).toEqual('health OK!');
+  });
+});
